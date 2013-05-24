@@ -1,0 +1,3 @@
+[submodule "app/scripts"]
+	path = app/scripts
+	url = https://github.com/cotag/bower-angular-gesture.git
