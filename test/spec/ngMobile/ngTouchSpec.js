@@ -36,10 +36,22 @@ describe('ngTouch (mobile)', function() {
     expect($rootScope.released).toBeUndefined();
 
     browserTrigger(element, 'touchstart');
-    expect($rootScope.released).toEqual(undefined);
+    expect($rootScope.released).toBeUndefined();
     browserTrigger($document, 'touchend');
 
     expect($rootScope.released).toEqual(true);
+  }));
+
+
+  it('should trigger a move event on touchmove', inject(function($rootScope, $compile, $document) {
+    element = $compile('<div ng-move="moved = $event.distance"></div>')($rootScope);
+    $rootScope.$digest();
+    expect($rootScope.moved).toBeUndefined();
+    browserTrigger(element, 'touchstart', [], 20, 20);
+    expect($rootScope.moved).toBeUndefined();
+    browserTrigger($document, 'touchmove', [], 20, 40);
+    expect($rootScope.moved).toEqual(20);
+    browserTrigger($document, 'touchend');
   }));
 
 });
