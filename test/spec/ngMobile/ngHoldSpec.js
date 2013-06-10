@@ -70,7 +70,7 @@ describe('ngHold (mobile)', function() {
 
 
   it('should not trigger hold on right click / context menu when requested', inject(function($rootScope, $compile, $timeout, $document) {
-    element = $compile('<div ng-hold="held = true" accept-right-click="false"></div>')($rootScope);
+    element = $compile('<div ng-hold="held = true" hold-accept-right-click="false"></div>')($rootScope);
     $rootScope.$digest();
     expect($rootScope.held).toBeUndefined();
     browserTrigger(element, 'contextmenu', [], 0, 0, 2);  // Right mouse button selected
