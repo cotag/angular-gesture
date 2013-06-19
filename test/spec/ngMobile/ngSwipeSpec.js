@@ -8,15 +8,6 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
         return time;
       };
 
-    if (restrictBrowsers) {
-      // TODO(braden): Once we have other touch-friendly browsers on CI, allow them here.
-      // Currently Firefox and IE refuse to fire touch events.
-      var chrome = /chrome/.test(navigator.userAgent.toLowerCase());
-      if (!chrome) {
-        return;
-      }
-    }
-
     // Skip tests on IE < 9. These versions of IE don't support createEvent(), and so
     // we cannot control the (x,y) position of events.
     // It works fine in IE 8 under manual testing.
