@@ -1,12 +1,12 @@
 'use strict';
 
-describe('ngHold (mobile)', function() {
+describe('ngHold (gesture)', function() {
   var element;
 
 
 
   beforeEach(function() {
-    module('ngMobile');
+    module('ngGesture');
   });
 
   afterEach(function() {
@@ -19,19 +19,19 @@ describe('ngHold (mobile)', function() {
     $rootScope.$digest();
     expect($rootScope.held).toBeUndefined();
 
-    browserTrigger(element, 'touchstart');
+    browserTrigger(element, 'pointerdown');
     $timeout.flush();
-    browserTrigger($document, 'touchend');
+    browserTrigger(element, 'pointerup');
     expect($rootScope.held).toEqual(true);
   }));
 
-  it('should not trigger hold if touchend comes before the timeout', inject(function($rootScope, $compile, $timeout, $document) {
+  it('should not trigger hold if pointerup comes before the timeout', inject(function($rootScope, $compile, $timeout, $document) {
     element = $compile('<div ng-hold="held = true"></div>')($rootScope);
     $rootScope.$digest();
     expect($rootScope.held).toBeUndefined();
 
-    browserTrigger(element, 'touchstart');
-    browserTrigger($document, 'touchend');
+    browserTrigger(element, 'pointerdown');
+    browserTrigger(element, 'pointerup');
     expect(function () {
       $timeout.flush();
     }).toThrow(new Error("No deferred tasks to be flushed"));
@@ -44,12 +44,12 @@ describe('ngHold (mobile)', function() {
     $rootScope.$digest();
     expect($rootScope.held).toBeUndefined();
 
-    browserTrigger(element, 'touchstart', [], 10, 10);
-    browserTrigger($document, 'touchmove', [], 400, 400);
+    browserTrigger(element, 'pointerdown', [], 10, 10);
+    browserTrigger(element, 'pointermove', [], 400, 400);
     expect(function () {
       $timeout.flush();
     }).toThrow(new Error("No deferred tasks to be flushed"));
-    browserTrigger($document, 'touchend', [], 10, 10);
+    browserTrigger(element, 'pointerup', [], 10, 10);
 
     expect($rootScope.held).toBeUndefined();
   }));

@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="TestApp" ng-controller="TestCtrl" style="height:100%;width:100%;" lang="en">
+  <head>
+    <title>End2end Test Runner</title>
+    <script src="components/angular/angular.js"></script>
+    <script src="scripts/pointerevents.js"></script>
+    <script src="scripts/nggesture/gesture.js"></script>
+    <script src="scripts/nggesture/directive/ngClick.js"></script>
+    <script src="scripts/nggesture/directive/ngDrag.js"></script>
+    <script src="scripts/nggesture/directive/ngSwipe.js"></script>
+    <script src="testpointer.js"></script>
+  </head>
+  <body style="height:100%;width:100%;">
+    <div ng-drag drag-move-element="true" style="background-color:blue; width:200px; height:200px; position: fixed;"></div>
+    <div ng-click="alert('test');" ng-swipe="alert('swipe')" style="height:100%;width:100%;">
+    <div ng-drag drag-move-element="true" style="background-color:blue; width:200px; height:200px; position: fixed;"></div>
+    </div>
+  </body>
+</html>

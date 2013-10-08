@@ -1,11 +1,11 @@
 'use strict';
 
-describe('ngTouch (mobile)', function() {
+describe('ngTouch (gesture)', function() {
   var element;
 
 
   beforeEach(function() {
-    module('ngMobile');
+    module('ngGesture');
   });
 
   afterEach(function() {
@@ -13,38 +13,38 @@ describe('ngTouch (mobile)', function() {
   });
 
 
-  it('should trigger a touch if on touchstart', inject(function($rootScope, $compile, $document) {
+  it('should trigger a touch if on pointerdown', inject(function($rootScope, $compile, $document) {
     element = $compile('<div ng-touch="touched = true"></div>')($rootScope);
     $rootScope.$digest();
     expect($rootScope.touched).toBeUndefined();
 
-    browserTrigger(element, 'touchstart');
-    browserTrigger($document, 'touchend');
+    browserTrigger(element, 'pointerdown');
+    browserTrigger(element, 'pointerup');
     expect($rootScope.touched).toEqual(true);
   }));
 
-  it('should trigger a release on touchend', inject(function($rootScope, $compile, $document) {
+  it('should trigger a release on pointerup', inject(function($rootScope, $compile, $document) {
     element = $compile('<div ng-release="released = true"></div>')($rootScope);
     $rootScope.$digest();
     expect($rootScope.released).toBeUndefined();
 
-    browserTrigger(element, 'touchstart');
+    browserTrigger(element, 'pointerdown');
     expect($rootScope.released).toBeUndefined();
-    browserTrigger($document, 'touchend');
+    browserTrigger(element, 'pointerup');
 
     expect($rootScope.released).toEqual(true);
   }));
 
 
-  it('should trigger a move event on touchmove', inject(function($rootScope, $compile, $document) {
+  it('should trigger a move event on pointermove', inject(function($rootScope, $compile, $document) {
     element = $compile('<div ng-move="moved = $event.distance"></div>')($rootScope);
     $rootScope.$digest();
     expect($rootScope.moved).toBeUndefined();
-    browserTrigger(element, 'touchstart', [], 20, 20);
+    browserTrigger(element, 'pointerdown', [], 20, 20);
     expect($rootScope.moved).toBeUndefined();
-    browserTrigger($document, 'touchmove', [], 20, 40);
+    browserTrigger(element, 'pointermove', [], 20, 40);
     expect($rootScope.moved).toEqual(20);
-    browserTrigger($document, 'touchend');
+    browserTrigger(element, 'pointerup');
   }));
 
 });

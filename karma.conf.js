@@ -7,10 +7,10 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'app/components/angular-unstable/angular.js',
+  'app/components/angular/angular.js',
   'app/components/angular-mocks/angular-mocks.js',
-  'app/scripts/ngMobile/*.js',
-  'app/scripts/ngMobile/**/*.js',
+  'app/scripts/ngGesture/*.js',
+  'app/scripts/ngGesture/**/*.js',
   'test/*.js',			// browser trigger
   'test/spec/**/*.js'
 ];

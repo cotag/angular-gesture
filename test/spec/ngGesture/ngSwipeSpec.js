@@ -17,7 +17,7 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
     }
 
     beforeEach(function() {
-      module('ngMobile');
+      module('ngGesture');
       orig_now = Date.now;
       time = 10;
       Date.now = mockTime;
@@ -34,7 +34,7 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
       expect($rootScope.swiped).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 100, 20);
-      browserTrigger($document, endEvent, [], 20, 20);
+      browserTrigger(element, endEvent, [], 20, 20);
       expect($rootScope.swiped).toBe(true);
     }));
 
@@ -44,7 +44,7 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
       expect($rootScope.swiped).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 20, 20);
-      browserTrigger($document, endEvent, [], 90, 20);
+      browserTrigger(element, endEvent, [], 90, 20);
       expect($rootScope.swiped).toBe(true);
     }));
 
@@ -54,7 +54,7 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
       expect($rootScope.swiped).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 20, 90);
-      browserTrigger($document, endEvent, [], 20, 20);
+      browserTrigger(element, endEvent, [], 20, 20);
       expect($rootScope.swiped).toBe(true);
     }));
 
@@ -64,7 +64,7 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
       expect($rootScope.swiped).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 20, 20);
-      browserTrigger($document, endEvent, [], 20, 90);
+      browserTrigger(element, endEvent, [], 20, 90);
       expect($rootScope.swiped).toBe(true);
     }));
 
@@ -76,8 +76,8 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
       expect($rootScope.swiped).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 90, 20);
-      browserTrigger($document, moveEvent, [], 70, 200);
-      browserTrigger($document, endEvent, [], 20, 20);
+      browserTrigger(element, moveEvent, [], 70, 200);
+      browserTrigger(element, endEvent, [], 20, 20);
 
       expect($rootScope.swiped).toBeUndefined();
     }));
@@ -90,8 +90,8 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
       expect($rootScope.swiped).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 20, 20);
-      browserTrigger($document, moveEvent, [], 200, 70);
-      browserTrigger($document, endEvent, [], 20, 90);
+      browserTrigger(element, moveEvent, [], 200, 70);
+      browserTrigger(element, endEvent, [], 20, 90);
 
       expect($rootScope.swiped).toBeUndefined();
     }));
@@ -104,7 +104,7 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
       expect($rootScope.swiped).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 90, 20);
-      browserTrigger($document, endEvent, [], 80, 20);
+      browserTrigger(element, endEvent, [], 80, 20);
 
       expect($rootScope.swiped).toBeUndefined();
     }));
@@ -118,13 +118,13 @@ var swipeTests = function(description, restrictBrowsers, startEvent, moveEvent, 
 
       browserTrigger(element, startEvent, [], 100, 20);
       time = 1000;
-      browserTrigger($document, endEvent, [], 20, 20);
+      browserTrigger(element, endEvent, [], 20, 20);
 
       expect($rootScope.swiped).toBeUndefined();
     }));
   });
 }
 
-swipeTests('touch', true  /* restrictBrowers */, 'touchstart', 'touchmove', 'touchend');
-swipeTests('mouse', false /* restrictBrowers */, 'mousedown',  'mousemove', 'mouseup');
+swipeTests('pointer', false  /* restrictBrowers */, 'pointerdown', 'pointermove', 'pointerup');
+//swipeTests('mouse', false /* restrictBrowers */, 'mousedown',  'mousemove', 'mouseup');
 

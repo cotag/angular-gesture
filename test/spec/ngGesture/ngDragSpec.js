@@ -17,7 +17,7 @@ var dragTests = function(description, restrictBrowsers, startEvent, moveEvent, e
     }
 
     beforeEach(function() {
-      module('ngMobile');
+      module('ngGesture');
       orig_now = Date.now;
       time = 10;
       Date.now = mockTime;
@@ -29,7 +29,7 @@ var dragTests = function(description, restrictBrowsers, startEvent, moveEvent, e
     });
 
     it('should trigger start, move and end events', inject(function($rootScope, $compile, $document) {
-      element = $compile('<div drag-start="started = true" ng-drag="moved = true" drag-end="ended = true"></div>')($rootScope);
+      element = $compile('<div drag-begin="started = true" ng-drag="moved = true" drag-stop="ended = true"></div>')($rootScope);
       $rootScope.$digest();
 
       expect($rootScope.started).toBeUndefined();
@@ -37,8 +37,8 @@ var dragTests = function(description, restrictBrowsers, startEvent, moveEvent, e
       expect($rootScope.ended).toBeUndefined();
 
       browserTrigger(element, startEvent, [], 100, 20);
-      browserTrigger($document, moveEvent, [], 20, 20);
-      browserTrigger($document, endEvent, [], 20, 20);
+      browserTrigger(element, moveEvent, [], 20, 20);
+      browserTrigger(element, endEvent, [], 20, 20);
 
       expect($rootScope.started).toBe(true);
       expect($rootScope.moved).toBe(true);
@@ -47,6 +47,6 @@ var dragTests = function(description, restrictBrowsers, startEvent, moveEvent, e
   });
 }
 
-dragTests('touch', true  /* restrictBrowers */, 'touchstart', 'touchmove', 'touchend');
-dragTests('mouse', false /* restrictBrowers */, 'mousedown',  'mousemove', 'mouseup');
+dragTests('pointer', true  /* restrictBrowers */, 'pointerdown', 'pointermove', 'pointerup');
+//dragTests('mouse', false /* restrictBrowers */, 'mousedown',  'mousemove', 'mouseup');
 
