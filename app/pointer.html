@@ -1,19 +1,293 @@
 <!doctype html>
-<html ng-app="TestApp" ng-controller="TestCtrl" style="height:100%;width:100%;" lang="en">
-  <head>
-    <title>End2end Test Runner</title>
-    <script src="components/angular/angular.js"></script>
-    <script src="scripts/pointerevents.js"></script>
-    <script src="scripts/nggesture/gesture.js"></script>
-    <script src="scripts/nggesture/directive/ngClick.js"></script>
-    <script src="scripts/nggesture/directive/ngDrag.js"></script>
-    <script src="scripts/nggesture/directive/ngSwipe.js"></script>
-    <script src="testpointer.js"></script>
-  </head>
-  <body style="height:100%;width:100%;">
-    <div ng-drag drag-move-element="true" style="background-color:blue; width:200px; height:200px; position: fixed;"></div>
-    <div ng-click="alert('test');" ng-swipe="alert('swipe')" style="height:100%;width:100%;">
-    <div ng-drag drag-move-element="true" style="background-color:blue; width:200px; height:200px; position: fixed;"></div>
-    </div>
-  </body>
+<html ng-app="TestApp" ng-controller="TestCtrl" lang="en">
+    <head>
+        <title>End2end Test Runner</title>
+        <script src="components/angular/angular.js"></script>
+        <script src="components/pointerevents-polyfill/pointerevents.dev.js"></script>
+        <script src="scripts/ngGesture/gesture.js"></script>
+        <script src="scripts/ngGesture/directive/ngClick.js"></script>
+        <script src="scripts/ngGesture/directive/ngDrag.js"></script>
+        <script src="scripts/ngGesture/directive/ngSwipe.js"></script>
+        <script src="testpointer.js"></script>
+
+        <style type="text/css">
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                position: fixed;
+                top:0;
+                left:0;
+                height: 4em;
+                width: 100%;
+                background-color: red;
+            }
+
+
+            div.padding {
+                height: 4em;
+            }
+
+            section {
+                margin-left: 20em;
+            }
+
+            nav {
+                position:fixed;
+                left: 0;
+                height: 100%;
+                width: 20em;
+                background-color: gray;
+                color: white;
+            }
+
+            /* nav wrapper */
+            nav > div {
+                width: 100%;
+                height: 100%;
+            }
+
+            nav > div > aside {
+                position: relative;
+
+                height: 100%;
+                width: 30%;
+
+                float: left;
+
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body ng-app="TestApp" ng-controller="TestCtrl">
+        <header>
+            <h1>Title</h1>
+        </header>
+        <div class="padding"></div>
+        <nav ng-swipe-left="alert('nav')" ng-drag drag-y-axis="false" drag-move-element="true">
+            <div>
+                <aside>
+                    {{ 1+2 }}
+                </aside>
+                <div>
+                    blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+                    blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+                    blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+                </div>
+            </div>
+        </nav>
+        <section ng-swipe-left="alert('section')">
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah <br />
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah <br />
+        </section>
+    </body>
 </html>
